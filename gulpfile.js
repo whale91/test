@@ -27,9 +27,6 @@ function errorHandler(task, title) {
         this.emit('end');
     };
 }
-gulp.tast('compile_project', function () {
-
-})
 /* Build task */
 gulp.task('js:webpack', function() {
   return gulp.src(['./src/js/**/*'])
