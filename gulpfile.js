@@ -27,7 +27,9 @@ function errorHandler(task, title) {
         this.emit('end');
     };
 }
+gulp.tast('compile_project', function () {
 
+})
 /* Build task */
 gulp.task('js:webpack', function() {
   return gulp.src(['./src/js/**/*'])
@@ -97,7 +99,7 @@ gulp.task('jade', function() {
     });
 });
 gulp.task('prebuild', $.sequence(['js:webpack', 'jade']));
-gulp.task('build', $.sequence(['jade','js:webpack', 'js:vendor']));
+gulp.task('build', $.sequence(['jade','js:webpack', 'js:vendor', 'copy:static']));
 gulp.task('serve', $.sequence('build', 'browsersync', 'watch'));
 gulp.task('make_scripts', $.sequence(['js:vendor'], ['js:webpack'], ['js:buildApp']));
 gulp.task('default', ['build']);
