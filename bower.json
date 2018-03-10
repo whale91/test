@@ -1,0 +1,18 @@
+{
+  "name": "clear",
+  "version": "0.0.0",
+  "ignore": [
+    ".jshintrc",
+    "**/*.txt"
+  ],
+  "dependencies": {
+    "angular": "1.6.1",
+    "angular-route": "1.6.1",
+    "angular-ui-router": "^0.4.2",
+    "angular-ui-mask": "*"
+  },
+  "devDependencies": {
+    "angular-translate": "^2.15.1"
+  },
+  "overrides": {}
+}

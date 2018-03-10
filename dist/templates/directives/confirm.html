@@ -1,0 +1,28 @@
+
+<div style="display: none">
+  <div class="confirm modal-dialog">
+    <div ng-hide="instance.hideLogo" class="question_icon"></div>
+    <div ng-if="instance.message" ng-bind-html="instance.message | trust" class="message modal-message center"></div>
+    <div ng-if="instance.template &amp;&amp; instance.scope" sg-template-compiler="instance" class="message center"></div>
+    <div ng-if="!instance.mustConfirm">
+      <div class="col-xs-6 suc_modal">
+        <input type="submit" ng-value="instance.notButton | emptyToDefault:'No'" ng-click="reject()" class="typical_btn"/>
+      </div>
+      <div class="col-xs-6 suc_modal">
+        <input type="submit" ng-value="instance.yesButton | emptyToDefault:'Yes'" ng-click="approve()" class="typical_btn"/>
+      </div>
+    </div>
+    <div ng-if="instance.mustConfirm == true" class="buttons">
+      <div class="left">
+        <div class="av_checkbox">
+          <label ng-click="instance.confirmed = !instance.confirmed" ng-class="{&quot;checked&quot; : instance.confirmed, &quot;-error&quot; : confirmed_error}"></label>
+          <p ng-click="instance.confirmed = !instance.confirmed" class="checkbox_label">{{instance.confirmText | emptyToDefault:"Я согласен"}}</p>
+        </div>
+      </div>
+      <div class="right">
+        <input type="submit" ng-value="instance.notButton | emptyToDefault:'Нет'" ng-click="reject()" class="typical_btn"/>
+        <input type="submit" ng-value="instance.yesButton | emptyToDefault:'Да'" ng-click="approve()" class="typical_btn"/>
+      </div>
+    </div>
+  </div>
+</div>

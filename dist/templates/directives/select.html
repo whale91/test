@@ -1,0 +1,8 @@
+
+<div class="ui-select">
+  <div class="ui-btn ui-icon-carat-d ui-btn-icon-right ui-corner-all ui-shadow"><span>{{showText(object[selectedVal], object[optionName])}}</span>
+    <select ng-model="object[selectedVal]">
+      <option ng-repeat="option in object[optionName]" ng-selected="object[selectedVal]==option.value" ng-value="option.value">{{option.text}}</option>
+    </select>
+  </div>
+</div>

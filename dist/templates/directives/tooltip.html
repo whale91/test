@@ -1,0 +1,7 @@
+
+<div ng-class="{'-top' : top}" ng-show="object.errorMessage.length &gt; 0 || object.message.length &gt; 0" class="tooltip-wrapper">
+  <div class="ui-tooltip ui-corner-all ui-widget-shadow ui-widget ui-widget-content fade">
+    <div class="ui-tooltip-content">{{object.message}}</div>
+    <div ng-if="object.errorMessage" ng-bind-html="object.errorMessage | trust" class="ui-tooltip-content tooltip-error"></div>
+  </div>
+</div>

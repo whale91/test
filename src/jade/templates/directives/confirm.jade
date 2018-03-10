@@ -1,0 +1,30 @@
+div(style = "display: none")
+    .confirm.modal-dialog
+        .question_icon(ng-hide = "instance.hideLogo")
+        .message.modal-message.center(ng-if = "instance.message" ng-bind-html = "instance.message | trust")
+        .message.center(ng-if = "instance.template && instance.scope" sg-template-compiler = "instance")
+        div(ng-if = "!instance.mustConfirm")
+            .col-xs-6.suc_modal
+                input.typical_btn(type="submit" ng-value="instance.notButton | emptyToDefault:'No'", ng-click = "reject()")
+            .col-xs-6.suc_modal
+                input.typical_btn(type="submit" ng-value="instance.yesButton | emptyToDefault:'Yes'", ng-click = "approve()")
+        div.buttons(ng-if = "instance.mustConfirm == true")
+            .left
+                .av_checkbox
+                    label(
+                    ng-click = "instance.confirmed = !instance.confirmed"
+                    ng-class = '{"checked" : instance.confirmed, "-error" : confirmed_error}'
+                    )
+                    p.checkbox_label(ng-click = "instance.confirmed = !instance.confirmed")
+                        | {{instance.confirmText | emptyToDefault:"Я согласен"}}
+            .right
+                input.typical_btn(
+                type="submit",
+                ng-value="instance.notButton | emptyToDefault:'Нет'",
+                ng-click = "reject()"
+                )
+                input.typical_btn(
+                type="submit",
+                ng-value="instance.yesButton | emptyToDefault:'Да'",
+                ng-click = "approve()"
+                )

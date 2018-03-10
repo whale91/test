@@ -1,0 +1,16 @@
+header
+  // Fixed navbar
+  nav.navbar.navbar-dark.fixed-top.bg-dark
+    col-4
+    col-4
+      a.navbar-brand(href='#') Messenger
+    li.dropdown
+      button.navbar-toggler(type='button' data-toggle="dropdown")
+        span.navbar-toggler-icon
+        ul.dropdown-menu
+          li(ng-click="export()")
+            p Export
+          li(ng-click="delete()")
+            p Delete all
+
+

@@ -1,0 +1,6 @@
+div(style = "display: none")
+    .successful.modal-dialog.center
+        img(src='img/successfull.png', alt='')
+        p(ng-bind-html = "instance.message | trust")
+        .col-12.suc_modal
+            input.typical_btn(type="submit" value="Ок", ng-click = "close()")

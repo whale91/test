@@ -1,0 +1,8 @@
+
+<ul>
+  <li ng-class="{&quot;nav_has_children&quot; : element.children}" ng-repeat="element in menu"><a ng-href="{{element.link}}" ng-click="scrollIfHome()">{{element.title}}</a>
+    <ul class="hidden_nav">
+      <li ng-repeat="child in element.children"><a ng-href="{{child.link}}" ng-click="scrollIfHome()">{{child.title}}</a></li>
+    </ul>
+  </li>
+</ul>

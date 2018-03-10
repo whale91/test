@@ -1,0 +1,7 @@
+div(style = "display: none")
+    .error.modal-dialog.center
+        img(src='img/error.png', alt='')
+        p.title(ng-bind-html="instance.title | trust")
+        p.error-message(ng-repeat = "error in instance.errors" ng-bind-html="error.message | trust")
+        .col-12.suc_modal
+            input.typical_btn(type="submit" value="Ок", ng-click = "close()")

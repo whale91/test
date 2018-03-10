@@ -1,0 +1,10 @@
+
+<div style="display: none">
+  <div class="error modal-dialog center"><img src="img/error.png" alt=""/>
+    <p ng-bind-html="instance.title | trust" class="title"></p>
+    <p ng-repeat="error in instance.errors" ng-bind-html="error.message | trust" class="error-message"></p>
+    <div class="col-12 suc_modal">
+      <input type="submit" value="Ок" ng-click="close()" class="typical_btn"/>
+    </div>
+  </div>
+</div>

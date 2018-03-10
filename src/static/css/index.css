@@ -1,0 +1,511 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+.col{
+    display: inline-block;
+}
+body{
+    padding: 10px;
+}
+/*
+body {
+    -webkit-touch-callout: none;                !* prevent callout to copy image, etc when tap to hold *!
+    -webkit-text-size-adjust: none;             !* prevent webkit from resizing text to fit *!
+    -webkit-user-select: none;                  !* prevent copy paste, to allow, change 'none' to 'text' *!
+    background-color:#E4E4E4;
+    background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-image:-webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        color-stop(0, #A7A7A7),
+        color-stop(0.51, #E4E4E4)
+    );
+    background-attachment:fixed;
+    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-size:12px;
+    height:100%;
+    margin:0px;
+    padding:0px;
+    text-transform:uppercase;
+    width:100%;
+}
+
+!* Portrait layout (default) *!
+.app {
+    background:url(../img/logo.png) no-repeat center top; !* 170px x 200px *!
+    position:absolute;             !* position in the center of the screen *!
+    left:50%;
+    top:50%;
+    height:50px;                   !* text area height *!
+    width:225px;                   !* text area width *!
+    text-align:center;
+    padding:180px 0px 0px 0px;     !* image height is 200px (bottom 20px are overlapped with text) *!
+    margin:-115px 0px 0px -112px;  !* offset vertical: half of image height and text area height *!
+                                   !* offset horizontal: half of text area width *!
+}
+
+!* Landscape layout (with min-width) *!
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    .app {
+        background-position:left center;
+        padding:75px 0px 75px 170px;  !* padding-top + padding-bottom + text area = image height *!
+        margin:-90px 0px 0px -198px;  !* offset vertical: half of image height *!
+                                      !* offset horizontal: half of image width and text area width *!
+    }
+}
+
+h1 {
+    font-size:24px;
+    font-weight:normal;
+    margin:0px;
+    overflow:visible;
+    padding:0px;
+    text-align:center;
+}
+
+.event {
+    border-radius:4px;
+    -webkit-border-radius:4px;
+    color:#FFFFFF;
+    font-size:12px;
+    margin:0px 30px;
+    padding:2px 0px;
+}
+
+.event.listening {
+    background-color:#333333;
+    display:block;
+}
+
+.event.received {
+    background-color:#4B946A;
+    display:none;
+}
+
+@keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+
+@-webkit-keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+
+.blink {
+    animation:fade 3000ms infinite;
+    -webkit-animation:fade 3000ms infinite;
+}
+*/
+.labs{
+    padding: 10px;
+}
+/*custom support styles*/
+.center{
+ text-align: center;
+}
+.mglra{
+    margin-left: auto;
+    margin-right: auto;
+}
+.mgb10{
+    margin-bottom: 10px;
+}
+.not_row{
+    width: 100%;
+    margin: 0;
+}
+/*cameras and labs*/
+.single_camera{
+    box-shadow: 0px 4px 1px #c1c1c1, 0px 4px 1px #c1c1c1;
+    transition: all 0.25s;
+    border: 1px solid #d8d8d8;
+    padding-bottom: 3px;
+    margin-bottom: 10px;
+}
+.single_camera table{
+    margin: auto;
+}
+.camera_meta table>tbody>tr>td:nth-child(2n),
+.single_camera table>tbody>tr>td:nth-child(2n) {
+    padding-left: 15%;
+}
+.camera_meta table>tbody>tr>td,
+.single_camera table>tbody>tr>td{
+    width: 50%;
+}
+.camera_meta table {
+    width: 100%;
+    margin-top: 20px;
+}
+.camera_meta select{
+    width: 100%;
+    height: 35px;
+    padding: 0 10px 0;
+}
+.camera{
+    padding-right: 15px;
+}
+.page_title_header{
+    margin-bottom: 50px;
+    display: inline-block;
+}
+.camera_add input{
+    height: 35px;
+}
+.camera_add .header{
+    margin-top: -5%;
+}
+.camera_add button.mglra{
+    margin-top: 50px;
+}
+
+div.img-drop{
+    background-image: url(/img/drag_here.png);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: 130px 165px;
+    opacity: 0.6;
+    transition: all 0.5s;
+}
+div.img-drop:hover{
+    opacity: 1;
+}
+.camera_add img.drag-image{
+    height: 300px;
+    display: inherit;
+    margin-top: 5%;
+    z-index: 50;
+    background-size: contain !important;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    width: 100%;
+ }
+
+input[type="file"]{
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    z-index: 100;
+}
+/*drags*/
+a.drag-enter{
+    border-color: #e9ecef #e9ecef #dee2e6 !important;
+}
+div.drag-over,
+div.dragging{
+    border: 2px solid grey;
+    border-radius: 2px;
+    background: rgba(0,18,32,0.5);
+    box-shadow: 3px 9px 1px #c1c1c1, -3px 9px 1px #c1c1c1;
+}
+.li-camera {
+    border-left: 3px solid #b9b9b9;
+    padding-left: 17px;
+    margin-left: 20px;
+    height: 25px;
+    font-size: 18px;
+}
+.li-lab {
+    font-size: 20px;
+}
+.li-lab.active {
+    font-weight: 500;
+    text-decoration: underline;
+}
+/*tooltip*/
+rs-tooltip{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    left: 0;
+    top: 28%;
+    display: inline-block;
+    z-index: 1000;
+}
+.ui-tooltip{
+    border: 1.4px solid #e0e0e0;
+    border-radius: 4px;
+    background-color: #ffffff;
+    padding: 5px;
+}
+
+/* _______________________ modal ___________________________ */
+
+
+/*BEGIN modal=>>*/
+
+.arcticmodal-overlay,
+.arcticmodal-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+}
+.arcticmodal-container {
+    z-index: 1000;
+}
+.arcticmodal-container {
+    overflow: auto;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-collapse: collapse;
+}
+
+*:first-child+html .arcticmodal-container {
+    height: 100%
+}
+
+.arcticmodal-container_i {
+    height: 100%;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.arcticmodal-container_i2 {
+    padding: 24px;
+    margin: 0;
+    border: 0;
+    vertical-align: middle;
+}
+
+.arcticmodal-error {
+    padding: 20px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    background: #000;
+    color: #fff;
+}
+
+.arcticmodal-loading {
+    width: 60px;
+    height: 60px;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    -webkit-background-size: 100% 100%;
+    background-size: 100%;
+}
+
+.box-modal {
+    position: relative;
+    width: 890px;
+    padding: 20px 25px 40px;
+    margin: 0 auto;
+}
+
+.box-modal_close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: #222222;
+    cursor: pointer;
+    z-index: 1;
+    opacity: 1;
+    font-size: 20px;
+}
+
+.box-modal_close:hover {
+    opacity: 0.5;
+}
+
+.modal {
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.form_head_mod {
+    background: url(../img/sepia_light.png) repeat top center;
+    padding: 0;
+    width: 100%;
+}
+
+.form_head_modal {
+    padding: 44px 20px 20px;
+}
+.modal-dialog input.typical_btn {
+    min-width: 150px;
+    transition: all 500ms;
+}
+.typical_btn:hover {
+    background: #006B70;
+    color: #fff;
+    border: 1px solid #006B70;
+}
+input[type="submit"] {
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+.typical_btn {
+    background: none;
+    height: 42px;
+    line-height: 40px;
+    text-align: center;
+    background: none;
+    border: 1px solid #171010;
+    color: #171010;
+    font-size: 12px;
+    text-transform: uppercase;
+    /* font-weight: 700; */
+    font-family: 'Rubik Mono One', sans-serif;
+}
+.modal-dialog {
+    border: 3px solid #E2E2E2;
+    background: #fff;
+    overflow: hidden;
+    margin: 0 18% 0;
+    padding: 3% 0 2%;
+    max-width: 100%;
+    pointer-events: all;
+}
+.suc_modal {
+    text-align: center;
+    padding-top: 21px;
+}
+
+/*<<=modal END*/
+/*login, register*/
+.register_form,
+.login_form {
+    margin-top: 15%;
+}
+.register_form h3,
+.login_form h3{
+    margin-bottom: 40px;
+    width: 100%;
+}
+.register_form,
+.login_form .btn{
+    padding: 8px 25px;
+}
+input.login,
+input.pass {
+    width: 250px;
+    height: 40px;
+    margin-bottom: 10px;
+    padding: 10px 15px 10px;
+}
+.-error {
+    outline: 1px solid red!important;
+}
+/*plus and config*/
+.nav-link.active.show .lab_header{
+    position: absolute;
+    right: 32px;
+    top: 15px;
+    height: 16px;
+    background-position: 50% 50%;
+    width: 16px;
+    background-image: url(/img/icons/add_person.png);
+}
+.nav-link{
+    cursor: pointer;
+}
+.nav-link.active.show .lab_header:hover{
+    background-color: rgba(214,213,214,0.8);
+}
+.lab_header_plus{
+    height: 16px;
+    background-position: 50% 50%;
+    width: 16px;
+    background-image: url(/img/icons/add_person.png);
+    position: absolute;
+    top: 14px;
+    left: 5px;
+}
+.camera_pic{
+    width: 100%;
+    height: 250px;
+}
+.camera_pic{
+    margin: auto;
+}
+
+.btn.logout{
+    margin-left: auto;
+}
+/*badges*/
+.badge {
+    display: inline-block;
+    padding: .25em .4em;
+    font-size: 100%;
+    font-weight: 500;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+}
+.camera_status_header{
+    padding: 0px 0 4px;
+    margin-top: 5px;
+    border-radius: 0;
+    width: 106%;
+    margin-left: -3%;
+}
+.camera_status_header.not_worked{
+    border: 1px solid #fff;
+    background-color: #fff;
+}
+.camera_status_header.no_connection{
+    border: 1px solid #d6d5d6;
+    background-color: #d6d5d6;
+}
+.camera_status_header.in_work{
+    border: 1px solid #2ed254c2;
+    background-color: #2ed254c2;
+}
+.camera_status_header.notice{
+    border: 1px solid rgba(255, 209, 51, 0.69);
+    background-color: rgba(255, 209, 51, 0.69);
+}
+.camera_status_header.alarm{
+    border: 1px solid rgb(214, 0, 22);
+    background-color: rgb(214, 0, 22);
+}
+/*inputs in camera*/
+.add_programm input{
+    height: 35px;
+    width: 49%;
+    margin-bottom: 5px;
+    padding: 10px 15px 10px;
+}
+.amcharts-graph-bullet {
+    cursor: ns-resize;
+}
