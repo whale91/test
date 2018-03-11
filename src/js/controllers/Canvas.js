@@ -9,10 +9,13 @@ function Canvas() {
     rand = Math.floor(rand);
     return rand;
   }
-  let columns = randomInt(1,100);
-  let rows = randomInt(1,100);
 
-  (function (m, n) {
+  let columns = randomInt(1,15);
+  let rows = randomInt(1,15);
+  createTable(columns, rows);
+
+  window.crea = createTable;
+  function createTable(m, n) {
     /// create base cell obj for table
     let rect = function (fromLeft = 0, fromTop = 0, firstCell) {
       let options = {
@@ -167,7 +170,7 @@ function Canvas() {
       //   canvas.renderAll();
       // }
     });
-  })(columns, rows);
+  }
 }
 
 export default injection;
