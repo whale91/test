@@ -1,8 +1,10 @@
 
 import Chat from 'controllers/Chat.js';
+import Canvas from 'controllers/Canvas.js';
 
 let Controllers = [
- Chat
+ Chat,
+ Canvas
 ];
 export default class {
   static inject(app) {
