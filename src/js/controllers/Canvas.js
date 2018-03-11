@@ -113,7 +113,7 @@ function Canvas() {
         stroke: '#000000',
 
       });
-      let t = new fabric.IText(`${columnNumber + 1} has clicked!`, {
+      let t = new fabric.IText(`Item  ${columnNumber + 1} is clicked!`, {
         backgroundColor: '#FFFFFF',
         fill: '#000000',
         fontSize: 12,
@@ -167,7 +167,7 @@ function Canvas() {
       //   canvas.renderAll();
       // }
     });
-  })(10, 15);
+  })(columns, rows);
 }
 
 export default injection;
